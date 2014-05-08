@@ -1,8 +1,8 @@
 // Author: Kenji Hata
 // Copyright: April 2014
 
-#ifndef CHAIKDTREE_HPP_
-#define CHAIKDTREE_HPP_
+#ifndef KDTREE_HPP_
+#define KDTREE_HPP_
 
 #include "chai3d.h"
 using namespace chai3d;
@@ -29,4 +29,4 @@ private:
 };
 
 
-#endif /* CHAIKDTREE_HPP_ */
+#endif /* KDTREE_HPP_ */
