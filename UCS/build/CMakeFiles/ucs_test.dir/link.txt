@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -O3    CMakeFiles/ucs_test.dir/src/main.cpp.o  -o ucs_test -rdynamic 
