@@ -6,6 +6,7 @@
 #include <map>
 #include <iostream>
 #include <float.h>
+#include <random>
 
 // A crude implementation of a priority queue
 // Fibonacci Heap would definitely speed this up.
@@ -53,6 +54,26 @@ public:
 		cost = maxVal;
 		priorityMap.erase(maxState);
 		return maxState;
+	};
+
+	// returns a randomly removed state, based on the scores
+	T removeRandom(double &cost){
+		double sumScores = 0;
+		for (typename std::map<T, double>::iterator iter = priorityMap.begin(); iter != priorityMap.end(); ++iter){
+			sumScores += iter->second;
+		}
+		double r = (double) rand() / (RAND_MAX / sumScores);
+		T state;
+		for (typename std::map<T, double>::iterator iter = priorityMap.begin(); iter != priorityMap.end(); ++iter){
+			r -= iter->second;
+			if (r <= 0){
+				state = iter->first;
+				cost = iter->second;
+				break;
+			}
+		}
+		priorityMap.erase(state);
+		return state;
 	};
 
 	int getSize(){

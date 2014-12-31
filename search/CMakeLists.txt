@@ -4,7 +4,7 @@ project(search_test)
 
 SET(CMAKE_VERBOSE_MAKEFILE ON)
 
-SET(CMAKE_CXX_FLAGS "-Wall -O3")
+SET(CMAKE_CXX_FLAGS "-Wall -O3 -std=c++11")
 
 SET(ALL_SRC )
 

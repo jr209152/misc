@@ -1,5 +1,5 @@
-#ifndef PARTICLE_FILTERING_SEARCH_HPP_
-#define PARTICLE_FILTERING_SEARCH_HPP_
+#ifndef RANDOMIZED_BEAM_SEARCH_HPP_
+#define RANDOMIZED_BEAM_SEARCH_HPP_
 
 #include "Node.hpp"
 #include "MDP.hpp"
@@ -11,9 +11,9 @@
 #include <float.h>
 
 template <class T> 
-class BeamSearch{
+class RandomizedBeamSearch{
 public:
-	BeamSearch(MDP<T> *mdp, int K){
+	RandomizedBeamSearch(MDP<T> *mdp, int K){
 		problem = mdp;
 		totalCost = 0;
 		numStatesExplored = 0;
@@ -54,15 +54,18 @@ public:
 				}
 			}
 			
-			// take K best states
+			// randomly take K states based on score
 			double temp = 0;
-			while (frontier.getSize() > K){
-				newFrontier.removeMax(temp);
+			while (newFrontier.getSize() > K){
+				newFrontier.removeRandom(temp);
 			}
 			frontier = newFrontier;	
 		}
 		std::cout << "No path found" << std::endl;
 	};
+
+Node<T> closest_state;
+double closest_cost;
 
 private:
 	MDP<T> *problem;
@@ -71,4 +74,4 @@ private:
 	int K;
 };
 
-#endif /* PARTICLE_FILTERING_SEARCH_HPP_ */ 
+#endif /* RANDOMIZED_BEAM_SEARCH_HPP_ */ 

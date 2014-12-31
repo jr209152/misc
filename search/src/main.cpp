@@ -3,6 +3,7 @@
 #include "Node.hpp"
 #include "SimpleLineMDP.hpp"
 #include "BeamSearch.hpp"
+#include "RandomizedBeamSearch.hpp"
 #include <iostream>
 
 int main(){
@@ -15,8 +16,15 @@ int main(){
 	std::cout << "\n\n";
 
 	std:: cout << "BEAM START" << std::endl;
-	BeamSearch<int> beam = BeamSearch<int> (mdp,2);
+	BeamSearch<int> beam = BeamSearch<int> (mdp,100);
 	beam.solve();
 	std::cout << "BEAM DONE" << std::endl;
+
+	std::cout << "\n\n";
+
+	std::cout << "RANDOM BEAM START" << std::endl;
+	RandomizedBeamSearch<int> rbeam = RandomizedBeamSearch<int>(mdp, 2);
+	rbeam.solve();
+	std::cout << "RANDOM BEAM DONE" << std::endl;
 	return 0;
 }

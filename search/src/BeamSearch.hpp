@@ -50,7 +50,7 @@ public:
 				std::vector<Node<T> *> succ_vec = problem->getSuccAndCost(state);
 				for (size_t i = 0; i < succ_vec.size(); i++){
 					Node<T> *ns = succ_vec[i];
-					newFrontier.update(ns, ns->cost); // maybe add pastcost?
+					newFrontier.update(ns, ns->cost + pastCost); // maybe add pastcost?
 				}
 			}
 			
